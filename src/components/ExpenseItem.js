@@ -1,5 +1,13 @@
-function ExpenseItem () {
-    return <h2>Expense Item!</h2>
+function ExpenseItem(props) {
+  return (
+    <div>
+      <div>{props.date.toISOString()}</div>
+      <div>
+        <h2>{props.title}</h2>
+        <div>${props.amount}</div>
+      </div>
+    </div>
+  );
 }
 
-export default ExpenseItem
+export default ExpenseItem;
