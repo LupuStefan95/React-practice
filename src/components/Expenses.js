@@ -1,10 +1,10 @@
 import ExpenseItem from "./ExpenseItem";
-import './ExpensesRender.css'
-
+import "./ExpensesRender.css";
 
 function Expenses(props) {
-  return <div className="expenses">
-     <ExpenseItem
+  return (
+    <div className="expenses">
+      <ExpenseItem
         title={props.items[0].title}
         amount={props.items[0].amount}
         date={props.items[0].date}
@@ -25,7 +25,7 @@ function Expenses(props) {
         date={props.items[3].date}
       ></ExpenseItem>
     </div>
-  
+  );
 }
 
-export default Expenses
+export default Expenses;

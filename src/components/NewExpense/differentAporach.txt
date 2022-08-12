@@ -1,0 +1,43 @@
+const [userInput, setUserInput] = useState({
+    enteredTitle: "",
+    enteredAmount: "",
+    enteredDate: "",
+  });
+
+  const titleChangeHandler = (event) => {
+    /*setUserInput({
+            ...userInput,
+            enteredTitle: event.target.value
+        })*/
+
+
+        //Use Arrow function when you need to use the previous state.
+
+    setUserInput((prevState) => {
+      return { ...prevState, enteredTitle: event.target.value };
+    });
+  };
+  const amountChangeHandler = (event) => {
+    /*setUserInput({
+            ...userInput,
+            enteredAmount: event.target.value
+        })*/
+
+        //Use Arrow function when you need to use the previous state.
+
+    setUserInput((prevState) => {
+      return { ...prevState, enteredAmount: event.target.value };
+    });
+  };
+  const dateChangeHandler = (event) => {
+    /*setUserInput({
+            ...userInput,
+            enteredDate: event.target.value
+        })*/
+
+        //Use Arrow function when you need to use the previous state.
+        
+    setUserInput((prevState) => {
+      return { ...prevState, enteredDate: event.target.value };
+    });
+  };
