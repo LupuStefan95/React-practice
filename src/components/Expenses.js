@@ -1,9 +1,27 @@
+import ExpensesFilter from "./ExpensesFilter/ExpensesFilter";
 import ExpenseItem from "./ExpenseItem";
 import "./ExpensesRender.css";
+import { useState } from "react";
 
 function Expenses(props) {
+
+  const [yearSelected, setYearSelected] = useState("");
+
+  const onSaveExpenseFilterHandler = (event) => {
+    setYearSelected(event)
+  };
+  console.log('Expenses.js', yearSelected);
+
+
+
+
   return (
     <div className="expenses">
+      <div>
+        <ExpensesFilter
+          onSaveExpenseFilter={onSaveExpenseFilterHandler}
+        ></ExpensesFilter>
+      </div>
       <ExpenseItem
         title={props.items[0].title}
         amount={props.items[0].amount}
