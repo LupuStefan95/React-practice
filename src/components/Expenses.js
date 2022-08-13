@@ -1,49 +1,54 @@
 import ExpensesFilter from "./ExpensesFilter/ExpensesFilter";
-import ExpenseItem from "./ExpenseItem";
+
 import "./ExpensesRender.css";
 import { useState } from "react";
+import ExpensesList from "./ExpensesList";
 
 function Expenses(props) {
-
   const [yearSelected, setYearSelected] = useState("");
 
   const onSaveExpenseFilterHandler = (event) => {
-    setYearSelected(event)
+    setYearSelected(event);
   };
-  console.log('Expenses.js', yearSelected);
 
+  const filteredExpenses = props.items.filter((expense) => {
+    return expense.date.getFullYear().toString() === yearSelected;
+  });
 
+  console.log("Expenses.js", yearSelected);
 
+/*Another way of diplsying filtered data
+  let expensesContent = alert("No Items Found");
+  if (filteredExpenses.length > 0) {
+    expensesContent = filteredExpenses.map((expenses) => (
+      <ExpenseItem
+        key={expenses.id}
+        title={expenses.title}
+        amount={expenses.amount}
+        date={expenses.date}
+      ></ExpenseItem>
+  ))}
+*/
 
   return (
     <div className="expenses">
-      <div>
-        <ExpensesFilter
-          onSaveExpenseFilter={onSaveExpenseFilterHandler}
-        ></ExpensesFilter>
-      </div>
-      <ExpenseItem
-        title={props.items[0].title}
-        amount={props.items[0].amount}
-        date={props.items[0].date}
-      ></ExpenseItem>
-      <ExpenseItem
-        title={props.items[1].title}
-        amount={props.items[1].amount}
-        date={props.items[1].date}
-      ></ExpenseItem>
-      <ExpenseItem
-        title={props.items[2].title}
-        amount={props.items[2].amount}
-        date={props.items[2].date}
-      ></ExpenseItem>
-      <ExpenseItem
-        title={props.items[3].title}
-        amount={props.items[3].amount}
-        date={props.items[3].date}
-      ></ExpenseItem>
+      <ExpensesFilter
+        onSaveExpenseFilter={onSaveExpenseFilterHandler}
+      ></ExpensesFilter>
+      <ExpensesList items={ filteredExpenses}></ExpensesList>
     </div>
   );
 }
+/* Alternative way with ternary expression
+{filteredExpenses.length === 0
+  ? alert("No Items Found")
+  : filteredExpenses.map((expenses) => (
+      <ExpenseItem
+        key={expenses.id}
+        title={expenses.title}
+        amount={expenses.amount}
+        date={expenses.date}
+      ></ExpenseItem>
+    ))}*/
 
 export default Expenses;
